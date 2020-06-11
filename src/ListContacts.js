@@ -10,7 +10,7 @@ class ListContacts extends Component {
              { this.props.contacts.map( (contact)=> 
              <li key={contact.id} className='contact-list-item'>
                  <div 
-                   className='contact-value' 
+                   className='contact-avatar' 
                     style={{
                        backgroundImage: `url(${contact.avatarURL})`
                  }}>
