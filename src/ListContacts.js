@@ -9,7 +9,7 @@ class ListContacts extends Component {
     }
 
     state={
-        query: '' 
+        query: ' ' 
     }
 
     updateSearch= (query)=> {
@@ -20,20 +20,24 @@ class ListContacts extends Component {
 
       render(){
         //console.log('Props', this.props);
+        
+        const { query } = this.state
+        const { contacts, deleteHandler } = this.props
+
         return (
         <div className='list-contacts'>
-            {/* {JSON.stringify(this.state)} */}
+            {JSON.stringify(this.state)}
          <div className='list-contacts-top'>
               <input 
                  className='search-contacts'
                  type='text'
-                 placeholder='Search conatacts'
-                 value={this.state.query}
+                 placeholder='Search contacts'
+                 value={query}
                  onChange={ (e)=> this.updateSearch(e.target.value) }
                  />
          </div>  
           <ol className='contact-list'>
-             { this.props.contacts.map( (contact)=> 
+             { contacts.map( (contact)=> 
              <li key={contact.id} className='contact-list-item'>
                  <div 
                    className='contact-avatar' 
@@ -45,7 +49,7 @@ class ListContacts extends Component {
                     <p> {contact.name} </p>
                     <p> {contact.handle} </p>
                  </div>
-                <button onClick={()=>this.props.deleteHandler(contact)} className='contact-remove'>
+                <button onClick={()=> deleteHandler(contact)} className='contact-remove'>
                     Remove
                 </button>
              </li>
