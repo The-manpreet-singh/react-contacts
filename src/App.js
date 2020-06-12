@@ -25,10 +25,9 @@ const contacts = [
 class app extends Component {
   render(){
    return (
-    <div className="App">
-     <h1>Hello world</h1>
+    <divc>
      <ListContacts contacts={contacts} />
-    </div>
+    </divc>
   );
 }
 }
