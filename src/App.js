@@ -28,11 +28,21 @@ class app extends Component {
      ]
   }
 
+  removeHanlder = (contact)=> {
+     this.setState( (currentState)=> ({
+         contacts: currentState.contacts.filter( (item)=>{
+           return item.id !== contact.id
+         })
+     }) )
+  }
+
   render(){
    return (
-    <divc>
-     <ListContacts contacts={this.state.contacts} />
-    </divc>
+    <div>
+     <ListContacts 
+           contacts={this.state.contacts}
+           deleteHandler={this.removeHanlder} />
+    </div>
   );
 }
 }
