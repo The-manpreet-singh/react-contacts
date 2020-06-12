@@ -26,7 +26,7 @@ class ListContacts extends Component {
         //console.log('Props', this.props);
         
         const { query } = this.state
-        const { contacts, deleteHandler } = this.props
+        const { contacts, deleteHandler, onNavigate } = this.props
 
         const showingContacts = query === '' ? contacts
                                 : contacts.filter( (c)=>(
@@ -44,6 +44,13 @@ class ListContacts extends Component {
                  value={query}
                  onChange={ (e)=> this.updateSearch(e.target.value) }
                  />
+
+                <a 
+                  className='add-contact' 
+                  href= '#Add'
+                  onClick={ onNavigate }
+                  />
+
          </div>  
 
          { showingContacts.length !== contacts.length && (
