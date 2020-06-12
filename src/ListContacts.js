@@ -9,13 +9,17 @@ class ListContacts extends Component {
     }
 
     state={
-        query: ' ' 
+        query: '' 
     }
 
-    updateSearch= (query)=> {
+    updateSearch= (query )=> {
         this.setState( ()=>({
             query: query.trim()
         }) )
+    }
+
+    clearHandler = () => {
+     this.updateSearch('')
     }
 
       render(){
@@ -31,7 +35,7 @@ class ListContacts extends Component {
 
         return (
         <div className='list-contacts'>
-            {JSON.stringify(this.state)}
+            {/* {JSON.stringify(this.state)} */}
          <div className='list-contacts-top'>
               <input 
                  className='search-contacts'
@@ -41,6 +45,16 @@ class ListContacts extends Component {
                  onChange={ (e)=> this.updateSearch(e.target.value) }
                  />
          </div>  
+
+         { showingContacts.length !== contacts.length && (
+             <div className='showing-contacts'>
+                 <span> Now shows {showingContacts.length} of
+                    {contacts.length}
+                 </span>
+                 <button onClick={this.clearHandler}>Show all</button>
+             </div>
+         ) }
+
           <ol className='contact-list'>
              { showingContacts.map( (contact)=> 
              <li key={contact.id} className='contact-list-item'>
