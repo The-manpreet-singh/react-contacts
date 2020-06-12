@@ -4,6 +4,8 @@ import ListContacts from './ListContacts';
 
 import * as ContactsAPI from './utils/ContactsAPI';
 
+import AddContacts from './AddContact';
+
 
 class app extends Component {
   
@@ -27,7 +29,8 @@ class app extends Component {
       //   "handle": "tylermcginnis",
       //   "avatarURL": "http://localhost:5001/tyler.jpg"
       // }
-     ]
+     ],
+     screen: 'Add'
   }
 
   componentDidMount() {
@@ -52,9 +55,16 @@ class app extends Component {
   render(){
    return (
     <div>
-     <ListContacts 
-           contacts={this.state.contacts}
-           deleteHandler={this.removeHanlder} />
+      {this.state.screen === 'list' && (
+          <ListContacts 
+          contacts={this.state.contacts}
+          deleteHandler={this.removeHanlder} />
+      ) }
+
+     {this.state.screen === 'Add' && (
+      <AddContacts /> 
+      ) }
+        
     </div>
   );
 }
