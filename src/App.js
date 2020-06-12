@@ -6,6 +6,7 @@ import * as ContactsAPI from './utils/ContactsAPI';
 
 import AddContact from './AddContact';
 
+import {Route} from 'react-router-dom';
 
 class app extends Component {
   
@@ -30,7 +31,7 @@ class app extends Component {
       //   "avatarURL": "http://localhost:5001/tyler.jpg"
       // }
      ],
-     screen: 'list'
+     
   }
 
   componentDidMount() {
@@ -55,21 +56,15 @@ class app extends Component {
   render(){
    return (
     <div>
-      {this.state.screen === 'list' && (
-          <ListContacts 
-          contacts={this.state.contacts}
-          deleteHandler={this.removeHanlder}
-          onNavigate = { ()=> {
-             this.setState( ()=> ({
-               screen: 'Add'
-             }) )
-          } } />
-      ) }
-
-     {this.state.screen === 'Add' && (
-      <AddContact /> 
-      ) }
-        
+     <Route exact path='/' render={ ()=> (
+         <ListContacts 
+         contacts={this.state.contacts}
+         deleteHandler={this.removeHanlder}
+         />
+     ) }
+    />
+     <Route path='/Add' component={AddContact} />
+  
     </div>
   );
 }
