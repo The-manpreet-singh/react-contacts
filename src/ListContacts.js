@@ -65,7 +65,7 @@ class ListContacts extends Component {
 
           <ol className='contact-list'>
              { showingContacts.map( (contact)=> 
-             <li key={contact.id} className='contact-list-item'>
+             <li key={contact.name} className='contact-list-item'>
                  <div 
                    className='contact-avatar' 
                     style={{
