@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import {Link} from 'react-router-dom';
+
 class ListContacts extends Component {
 
    static propTypes = {
@@ -26,7 +28,7 @@ class ListContacts extends Component {
         //console.log('Props', this.props);
         
         const { query } = this.state
-        const { contacts, deleteHandler, onNavigate } = this.props
+        const { contacts, deleteHandler} = this.props
 
         const showingContacts = query === '' ? contacts
                                 : contacts.filter( (c)=>(
@@ -45,11 +47,10 @@ class ListContacts extends Component {
                  onChange={ (e)=> this.updateSearch(e.target.value) }
                  />
 
-                <a 
+                <Link 
                   className='add-contact' 
-                  href= '#Add'
-                  onClick={ onNavigate }
-                  />
+                  to= '/Add'
+                  >Add Contact </Link>
 
          </div>  
 
