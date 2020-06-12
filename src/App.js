@@ -45,6 +45,8 @@ class app extends Component {
            return item.id !== contact.id
          })
      }) )
+
+     ContactsAPI.remove(contact)
   }
 
   render(){
