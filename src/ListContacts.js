@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function ListContacts(props)  {
+function ListContacts (props)  {
 
         //console.log('Props', this.props);
         return (
